@@ -1,0 +1,18 @@
+<div class='add-blog'>
+  <%= form_for @blog, url: blogs_path  do |f| %>
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+    <%= f.submit 'Add Blog' %>
+  <% end %>
+</div>
+
+<div class='blogs'>
+  <% @blogs.each do |blog| %>
+    <div class='blog'>
+      <%= blog.url %>
+      <%= blog.author %>
+    </div>
+  <% end %>
+</div>
