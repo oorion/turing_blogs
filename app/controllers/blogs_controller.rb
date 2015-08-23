@@ -1,12 +1,15 @@
+require 'rss'
+
 class BlogsController < ApplicationController
   def index
     @blog = Blog.new
-    @blogs = Blog.all
+    @posts = Post.all
   end
 
   def create
     blog = Blog.new(blog_params)
     if blog.save
+      flash[:notice] = "Added #{blog.url}"
       redirect_to root_path
     else
       flash[:notice] = "Invalid request"

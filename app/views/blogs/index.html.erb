@@ -1,3 +1,9 @@
+<h1>Turing Blogs</h1>
+
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash-#{name}" %>
+<% end %>
+
 <div class='add-blog'>
   <%= form_for @blog, url: blogs_path  do |f| %>
     <%= f.label :author %>
@@ -8,11 +14,8 @@
   <% end %>
 </div>
 
-<div class='blogs'>
-  <% @blogs.each do |blog| %>
-    <div class='blog'>
-      <%= blog.url %>
-      <%= blog.author %>
-    </div>
+<div class='posts'>
+  <% @posts.each do |post| %>
+    <%= link_to post.title, post.url %>
   <% end %>
 </div>

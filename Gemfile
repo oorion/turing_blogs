@@ -47,5 +47,6 @@ group :test do
   gem "minitest-capybara"
   gem "launchy"
   gem "pry"
+  gem "shoulda"
 end
 
