@@ -26,6 +26,5 @@ class AddingUrlTest < ActionDispatch::IntegrationTest
     add_blog
 
     assert page.has_content?('Combining HATEOAS APIs with Ember Data')
-    assert page.has_content?('http://oorion.net/building-up-to-the-tweet-news')
   end
 end
