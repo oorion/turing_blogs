@@ -6,16 +6,16 @@
 
 <div class='add-blog'>
   <%= form_for @blog, url: blogs_path  do |f| %>
-    <%= f.label :author %>
-    <%= f.text_field :author %>
-    <%= f.label :url %>
-    <%= f.text_field :url %>
+    <%= f.text_field :author, placeholder: 'Author' %>
+    <%= f.text_field :url, placeholder: 'RSS Url' %>
     <%= f.submit 'Add Blog' %>
   <% end %>
 </div>
 
-<div class='posts'>
+<div class="container-fluid posts">
   <% @posts.each do |post| %>
-    <%= link_to post.title, post.url %>
+    <div class="row post col-md-4 col-md-offset-4">
+      <%= link_to post.title, post.url %> <span class='float-right'><%= link_to post.blog.author, post.blog.url %></span>
+    </div>
   <% end %>
 </div>
