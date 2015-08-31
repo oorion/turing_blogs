@@ -50,3 +50,4 @@ group :test do
   gem "shoulda"
 end
 
+gem 'rails_12factor', group: :production
