@@ -4,7 +4,7 @@ class UrlFormatter
   def initialize(rss_url)
     @rss_url = rss_url
     @http_regex = /^http:\/\//
-    @rss_regex = /.+(?=\/rss)/
+    @rss_regex = /.+(?=\/.*)/
     @http = "http://"
   end
 

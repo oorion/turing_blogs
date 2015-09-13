@@ -32,4 +32,12 @@ class BlogTest < ActiveSupport::TestCase
 
     assert_equal 'http://oorion.net', blog.url
   end
+
+  test "formats a url correctly when the rss_url is missing http and has a different route" do
+    blog = create_blog(rss_url: 'dmitryvizer.com/?feed=rss2')
+
+    blog.save!
+
+    assert_equal 'http://dmitryvizer.com', blog.url
+  end
 end

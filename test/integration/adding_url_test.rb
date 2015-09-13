@@ -37,6 +37,19 @@ class AddingUrlTest < ActionDispatch::IntegrationTest
     assert_equal 'http://oorion.net', blog.url
   end
 
+  test "user can add an rss feed url with a strange syntax" do
+    visit '/blogs'
+
+    add_blog(author: 'Dmitry Vizersky', url: 'http://dmitryvizer.com/?feed=rss2')
+
+    blog = Blog.last
+    assert_equal root_path, current_path
+    assert page.has_content?('Added http://dmitryvizer.com/?feed=rss2')
+    assert_equal 'Dmitry Vizersky', blog.author
+    assert_equal 'http://dmitryvizer.com/?feed=rss2', blog.rss_url
+    assert_equal 'http://dmitryvizer.com', blog.url
+  end
+
   test "user can see post titles and links from the blog they added" do
     visit '/blogs'
 
