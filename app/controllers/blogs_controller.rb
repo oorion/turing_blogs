@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   def index
     @blog = Blog.new
-    @posts = Post.all
+    @posts = Post.order(published_on: :desc)
   end
 
   def create

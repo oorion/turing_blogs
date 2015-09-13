@@ -13,7 +13,11 @@ class Blog < ActiveRecord::Base
   def create_posts
     rss = RSS::Parser.parse(rss_url, false)
     rss.items.each do |post|
-      posts.create(title: post.title, url: post.link)
+      posts.create(
+        title: post.title,
+        url: post.link,
+        published_on: post.pubDate
+      )
     end
   end
 
