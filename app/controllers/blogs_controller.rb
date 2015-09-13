@@ -1,15 +1,14 @@
-require 'rss'
-
 class BlogsController < ApplicationController
   def index
     @blog = Blog.new
+    binding.pry
     @posts = Post.all
   end
 
   def create
     blog = Blog.new(blog_params)
     if blog.save
-      flash[:notice] = "Added #{blog.url}"
+      flash[:notice] = "Added #{blog.rss_url}"
       redirect_to root_path
     else
       flash[:notice] = "Invalid request"
@@ -20,6 +19,6 @@ class BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require('blog').permit(:author, :url)
+    params.require('blog').permit(:author, :rss_url)
   end
 end
