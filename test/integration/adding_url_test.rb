@@ -57,4 +57,18 @@ class AddingUrlTest < ActionDispatch::IntegrationTest
 
     assert page.has_content?('Combining HATEOAS APIs with Ember Data')
   end
+
+  test "blog posts are sorted in chronological order" do
+    post1 = 'Asset Pipeline'
+    post2 = 'Practical lessons from my first 3 months'
+    post3 = 'Your First Sinatra Apps'
+    post_order_regexp = Regexp.new("#{post1}.*#{post2}.*#{post3}")
+    visit '/blogs'
+
+    add_blog(author: 'Orion Osborn', url: 'oorion.net/rss')
+    add_blog(author: 'Dmitry Vizersky', url: 'dmitryvizer.com/?feed=rss2')
+
+    posts = page.find('div.posts')
+    assert posts.text.match(post_order_regexp)
+  end
 end

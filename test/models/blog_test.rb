@@ -40,4 +40,12 @@ class BlogTest < ActiveSupport::TestCase
 
     assert_equal 'http://dmitryvizer.com', blog.url
   end
+
+  test "creates posts with a published on date" do
+    blog = create_blog(rss_url: 'oorion.net/rss')
+
+    blog.save!
+
+    assert_equal 1440972132, blog.posts.first.published_on
+  end
 end
