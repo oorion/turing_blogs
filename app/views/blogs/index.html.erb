@@ -7,7 +7,7 @@
 <div class='add-blog'>
   <%= form_for @blog, url: blogs_path  do |f| %>
     <%= f.text_field :author, placeholder: 'Author' %>
-    <%= f.text_field :url, placeholder: 'RSS Url' %>
+    <%= f.text_field :rss_url, placeholder: 'RSS Url' %>
     <%= f.submit 'Add Blog' %>
   <% end %>
 </div>
