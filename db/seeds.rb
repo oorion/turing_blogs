@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+turing_blogs = [
+  ['Orion Osborn', 'oorion.net/rss'],
+  ['Dmitry Vizersky', 'http://dmitryvizer.com/?feed=rss2'],
+  ['Mike Dao', 'http://ploos.io/rss'],
+]
+
+turing_blogs.each do |author, rss_url|
+  Blog.create(author: author, rss_url: rss_url)
+end
+
