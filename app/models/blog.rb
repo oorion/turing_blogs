@@ -18,16 +18,12 @@ class Blog < ActiveRecord::Base
   end
 
   def format_rss_url
-    unless self.rss_url.match(/^http:\/\//)
-      self.rss_url = "http://#{rss_url}"
-    end
+    url_formatter = UrlFormatter.new(rss_url)
+    self.rss_url = url_formatter.format_rss_url
   end
 
   def format_url
-    unless self.rss_url.match(/^http:\/\//)
-      self.url = "http://#{rss_url}".match(/.+(?=\/rss)/)
-    else
-      self.url = self.rss_url.match(/.+(?=\/rss)/)
-    end
+    url_formatter = UrlFormatter.new(rss_url)
+    self.url = url_formatter.format_url
   end
 end
