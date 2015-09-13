@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   def index
     @blog = Blog.new
+    binding.pry
     @posts = Post.all
   end
 

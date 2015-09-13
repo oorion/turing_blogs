@@ -16,10 +16,12 @@ class AddingUrlTest < ActionDispatch::IntegrationTest
 
     add_blog
 
+    blog = Blog.last
     assert_equal root_path, current_path
     assert page.has_content?('Added http://oorion.net/rss')
-    assert_equal 'Orion Osborn', Blog.last.author
-    assert_equal 'http://oorion.net/rss', Blog.last.rss_url
+    assert_equal 'Orion Osborn', blog.author
+    assert_equal 'http://oorion.net/rss', blog.rss_url
+    assert_equal 'http://oorion.net', blog.url
   end
 
   test "user can add a url with http" do
@@ -27,10 +29,12 @@ class AddingUrlTest < ActionDispatch::IntegrationTest
 
     add_blog(author: 'Orion Osborn', url: 'http://oorion.net/rss')
 
+    blog = Blog.last
     assert_equal root_path, current_path
     assert page.has_content?('Added http://oorion.net/rss')
-    assert_equal 'Orion Osborn', Blog.last.author
-    assert_equal 'http://oorion.net/rss', Blog.last.rss_url
+    assert_equal 'Orion Osborn', blog.author
+    assert_equal 'http://oorion.net/rss', blog.rss_url
+    assert_equal 'http://oorion.net', blog.url
   end
 
   test "user can see post titles and links from the blog they added" do
