@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
       redirect_to root_path
     else
       flash[:notice] = "Invalid request"
-      render root_path
+      redirect_to root_path
     end
   end
 

@@ -17,3 +17,11 @@
 .float-right {
   float: right;
 }
+
+.center {
+  text-align: center;
+}
+
+.add-blog {
+  margin: 0 0 1em 0;
+}

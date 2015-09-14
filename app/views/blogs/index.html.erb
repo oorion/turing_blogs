@@ -1,20 +1,26 @@
-<h1>Turing Blogs</h1>
+<div class="row col-md-6 col-md-offset-3 center">
+  <h1>Turing Blogs</h1>
+</div>
 
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash-#{name}" %>
-<% end %>
-
-<div class='add-blog'>
-  <%= form_for @blog, url: blogs_path  do |f| %>
-    <%= f.text_field :author, placeholder: 'Author' %>
-    <%= f.text_field :rss_url, placeholder: 'RSS Url' %>
-    <%= f.submit 'Add Blog' %>
+<div class="row col-md-6 col-md-offset-3 center">
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash-#{name}" %>
   <% end %>
 </div>
 
-<div class="container-fluid posts">
+<div class="row col-md-6 col-md-offset-3 center">
+  <div class='add-blog'>
+    <%= form_for @blog, url: blogs_path  do |f| %>
+      <%= f.text_field :author, placeholder: 'Author' %>
+      <%= f.text_field :rss_url, placeholder: 'RSS Url' %>
+      <%= f.submit 'Add Blog' %>
+    <% end %>
+  </div>
+</div>
+
+<div class="posts list-group">
   <% @posts.each do |post| %>
-    <div class="row post col-md-4 col-md-offset-4">
+    <div class="row post col-md-6 col-md-offset-3 list-group-item">
       <%= link_to post.title, post.url %> <span class='float-right'><%= link_to post.blog.author, post.blog.url %></span>
     </div>
   <% end %>
