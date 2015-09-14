@@ -3,6 +3,9 @@ require 'rss'
 class Blog < ActiveRecord::Base
   has_many :posts
 
+  validates :author, uniqueness: true
+  validates :rss_url, uniqueness: true
+
   before_save :format_rss_url
   before_save :format_url
 
