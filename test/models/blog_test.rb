@@ -48,4 +48,14 @@ class BlogTest < ActiveSupport::TestCase
 
     assert_equal 1440972132, blog.posts.first.published_on
   end
+
+  test "should validate uniqueness of author and rss_url" do
+    blog1 = create_blog
+    blog2 = create_blog(author: 'test')
+    blog3 = create_blog(rss_url: 'test.com/rss')
+
+    assert blog1.save
+    refute blog2.save
+    refute blog3.save
+  end
 end
