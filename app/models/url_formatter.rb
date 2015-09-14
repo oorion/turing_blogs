@@ -9,6 +9,7 @@ class UrlFormatter
   end
 
   def format_rss_url
+    remove_trailing_slash_if_present
     unless rss_url.match(http_regex)
       http + rss_url
     else
@@ -22,5 +23,11 @@ class UrlFormatter
     else
       rss_url.match(rss_regex)
     end
+  end
+
+  private
+
+  def remove_trailing_slash_if_present
+    @rss_url[-1] = "" if rss_url.last == "/"
   end
 end

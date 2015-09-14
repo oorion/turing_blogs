@@ -71,4 +71,14 @@ class AddingUrlTest < ActionDispatch::IntegrationTest
     posts = page.find('div.posts')
     assert posts.text.match(post_order_regexp)
   end
+
+  test "user can add a url with a trailing slash" do
+    visit '/blogs'
+
+    add_blog(url: 'oorion.net/rss/')
+
+    blog = Blog.last
+    assert_equal 'http://oorion.net/rss', blog.rss_url
+    assert_equal 'http://oorion.net', blog.url
+  end
 end
