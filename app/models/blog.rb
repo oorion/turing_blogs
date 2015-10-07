@@ -11,8 +11,6 @@ class Blog < ActiveRecord::Base
 
   after_save :create_posts
 
-  private
-
   def create_posts
     rss = RSS::Parser.parse(rss_url, false)
     rss.items.each do |post|
@@ -23,6 +21,8 @@ class Blog < ActiveRecord::Base
       )
     end
   end
+
+  private
 
   def format_rss_url
     url_formatter = UrlFormatter.new(rss_url)
