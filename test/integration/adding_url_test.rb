@@ -7,7 +7,7 @@ class AddingUrlTest < ActionDispatch::IntegrationTest
     within '.add-blog' do
       fill_in 'blog[author]', with: author
       fill_in 'blog[rss_url]', with: url
-      click_button 'Add Blog'
+      click_button 'Add Your Blog!'
     end
   end
 
