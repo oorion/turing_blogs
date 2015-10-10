@@ -21,8 +21,12 @@
 <div class="posts list-group">
   <% @posts.each do |post| %>
     <div class="row post col-md-6 col-md-offset-3 list-group-item">
-      <%= link_to post.title, post.url %> <span class='float-right'><%= link_to post.blog.author, post.blog.url %></span>
+      <%= link_to post.title, post.url %>
+      <span class='float-right'>
+        <%= link_to post.blog.author, post.blog.url %>
+      </span>
     </div>
   <% end %>
 </div>
+
 
