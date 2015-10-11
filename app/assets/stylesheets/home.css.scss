@@ -1,0 +1,35 @@
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.add-blog {
+  margin: 100px 0 1em 0; 
+
+  input {
+    vertical-align: middle;
+  }
+}
+
+.navbar {
+  h1 {
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: Times New Roman;
+    letter-spacing: 0.0625em;
+  }
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+}
+

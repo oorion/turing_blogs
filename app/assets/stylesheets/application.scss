@@ -13,16 +13,7 @@
  *= require_tree .
  *= require_self
  */
-
-.float-right {
-  float: right;
-}
-
-.center {
-  text-align: center;
-}
-
-.add-blog {
-  margin: 0 0 1em 0;
-}
-
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url(//fonts.googleapis.com/css?family=Lato:400,300);
+@import "home";
