@@ -14,15 +14,21 @@
   </div>
 </div>
 
-<div class="posts list-group">
-  <% @posts.each do |post| %>
-    <div class="row post col-md-6 col-md-offset-3 list-group-item">
-      <%= link_to post.title, post.url %>
-      <span class='float-right'>
-        <%= link_to post.blog.author, post.blog.url %>
-      </span>
-    </div>
-  <% end %>
+<div>
+  <div class="posts list-group table-responsive">
+    <table class="table">
+      <% @posts.each do |post| %>
+        <tr class="row col-md-6 col-md-offset-3">
+          <td><%= link_to post.title, post.url %></td>
+          <td><%= link_to post.blog.author, post.blog.url %></td>
+        </tr>
+        <!-- <div class="row post col-md-6 col-md-offset-3 list-group-item"> -->
+          <!-- <span class='float-right'> -->
+            
+          <!-- </span> -->
+        <!-- </div> -->
+      <% end %>
+    </table>
+  </div>
 </div>
-
 
