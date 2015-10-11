@@ -13,17 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-$(document).ready(function(){
-  $(".post").mouseenter(function(){
-    $(this).addClass("active");
-    $(this).find('a').each(function(i, v){ $(v).css('color', 'white'); });
-  });
-});
-
-$(document).ready(function(){
-  $(".post").mouseleave(function(){
-    $(this).removeClass("active");
-    $(this).find('a').each(function(i, v){ $(v).css('color', '#337ab7'); });
-  });
-});

@@ -6,19 +6,21 @@ $(document).ready(function(){
 function unMouseOver(){
 	$(".post").mouseleave(function(){
 	  $(this).removeClass("active");
-	  $(this).find('a').each(function(i, v){
-	    changeTextColor(v, '#337ab7');
-	  });
+	  findLinksAndIterate.call(this, changeTextColor, '#337ab7');
 	});
 }
 
 function mouseOver(){
 	$(".post").mouseenter(function(){
 		$(this).addClass("active");
-		$(this).find('a').each(function(i, v){ 
-			changeTextColor(v, 'white');
-		});
+		findLinksAndIterate.call(this, changeTextColor, 'white');
 	});
+}
+
+function findLinksAndIterate(method, color) {
+	$(this).find('a').each(function(i, v){
+    changeTextColor(v, color);
+  });
 }
 
 function changeTextColor(element, color) {
