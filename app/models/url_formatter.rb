@@ -19,10 +19,10 @@ class UrlFormatter
   end
 
   def format_url
-    if rss_url.match(medium_rss_regex)
-      return rss_url.gsub("/feed", "")
-    end
-    unless rss_url.match(http_regex)
+    case
+    when rss_url.match(medium_rss_regex)
+      rss_url.gsub("/feed", "")
+    when !rss_url.match(http_regex)
       http + rss_url.match(rss_regex)
     else
       rss_url.match(rss_regex)
