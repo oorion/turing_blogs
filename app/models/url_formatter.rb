@@ -1,10 +1,11 @@
 class UrlFormatter
-  attr_reader :rss_url, :http_regex, :rss_regex, :http
+  attr_reader :rss_url, :http_regex, :rss_regex, :medium_rss_regex, :http
 
   def initialize(rss_url)
     @rss_url = rss_url
-    @http_regex = /^http:\/\//
+    @http_regex = /^(http|https):\/\//
     @rss_regex = /.+(?=\/.*)/
+    @medium_rss_regex = /.+\/feed\/.+/
     @http = "http://"
   end
 
@@ -18,6 +19,9 @@ class UrlFormatter
   end
 
   def format_url
+    if rss_url.match(medium_rss_regex)
+      return rss_url.gsub("/feed", "")
+    end
     unless rss_url.match(http_regex)
       http + rss_url.match(rss_regex)
     else

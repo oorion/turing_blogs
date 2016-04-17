@@ -41,6 +41,22 @@ class BlogTest < ActiveSupport::TestCase
     assert_equal 'http://dmitryvizer.com', blog.url
   end
 
+  test "can parse https rss urls" do
+    blog = new_blog(rss_url: 'https://medium.com/feed/@adamkijensen')
+
+    blog.save!
+
+    assert_equal 'https://medium.com/feed/@adamkijensen', blog.rss_url
+  end
+
+  test "can parse medium rss urls and save author url correctly" do
+    blog = new_blog(rss_url: 'https://medium.com/feed/@adamkijensen')
+
+    blog.save!
+
+    assert_equal 'https://medium.com/@adamkijensen', blog.url
+  end
+
   test "creates posts with a published on date" do
     blog = new_blog(rss_url: 'oorion.net/rss')
 
