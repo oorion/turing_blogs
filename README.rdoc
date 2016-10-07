@@ -1,4 +1,4 @@
-# Turing Blogs
+== Turing Blogs
 
 An Application for keeping track of Turing School student blogs. 
 
