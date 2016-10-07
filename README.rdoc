@@ -1,4 +1,5 @@
-#Turing Blogs
+# Turing Blogs
+
 An Application for keeping track of Turing School student blogs. 
 
 Production App: http://turing-blogs.herokuapp.com/
